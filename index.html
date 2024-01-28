@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GaussianHead: High-fidelity Head Avatars with Learnable Gaussian Derivation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">GaussianHead: High-fidelity Head Avatars with Learnable Gaussian Derivation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Jie Wang<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Jiu-Cheng Xie<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Xianyan Li<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Feng Xu<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Chi-Man Pun<sup>3</sup>,
+            </span>
+            <span class="author-block">
+              Hao Gao<sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Nanjing University of Posts and Telecommunications,</span><br>
+            <span class="author-block"><sup>2</sup>Tsinghua University,</span><br>
+            <span class="author-block"><sup>3</sup>University of Macau</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2312.01632"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/chiehwangs/gaussian-head"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+               <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://drive.google.com/file/d/1vriFnMGsXPVTWRsHQ37SmMNZxU17nICT/view?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <img src="./static/teaser-v2.png"/>
+      <p>
+        Figure. 1. Based on anisotropic 3D Gaussians and the learnable derivation strategies,
+        our method learns an identity-specific head avatar from a monocular video of the corresponding subject. 
+        The proposed GaussianHead demonstrates outstanding performance in self-reconstruction, novel-view synthesis
+        and cross-identity reenactment tasks.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Constructing vivid 3D head avatars for given subjects and realizing a series of animations on them is valuable yet challenging.
+            This paper presents GaussianHead, which models the actional human head with anisotropic 3D Gaussians. In our framework, a motion
+            deformation field and multi-resolution tri-plane are constructed respectively to deal with the head's dynamic geometry and complex
+            texture. Notably, we impose an exclusive derivation scheme on each Gaussian, which generates its multiple doppelgangers through a 
+            set of learnable parameters for position transformation. With this design, we can compactly and accurately encode the appearance 
+            information of Gaussians, even those fitting the head's particular components with sophisticated structures. In addition, an inherited
+            derivation strategy for newly added Gaussians is adopted to facilitate training acceleration. Extensive experiments show that our method
+            can produce high-fidelity renderings, outperforming state-of-the-art approaches in reconstruction, cross-identity reenactment, and novel
+            view synthesis tasks. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+  
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3" style="text-align: center;">Method</h2>
+    <div class="hero-body">
+        <img src="./static/pipeline.png"/>
+      <p>Figure. 2. GaussianHead uses a set of 3D Gaussians with learnable parameters controlling their
+        shape and appearance to model the subject's head. To represent the dynamic head geometry, a motion deformation 
+        field is first set up, which converts structureless Gaussians to structured core ones in a canonical space via
+        conditioning on pre-acquired expression parameters. A multi-resolution tri-plane is leveraged to store
+        appearance-related attributes. Notably, derivation mechanisms through learnable rotations are applied to each core
+        Gaussian, yielding several doppelgangers of it. The integration of sub-features obtained through projection
+        onto the planes from those doppelgangers is taken as the final canonical feature of the core Gaussian. 
+        Two separate MLPs are employed to decode opacity and spherical harmonic coefficients (SHs), based on
+        which we generate the final rendering via differential rasterization. Notations odot and bigcup represent
+        Hadamard product and concatenation operations, respectively.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background-color: #fff;">
+  <h2 class="title is-3" style="text-align: center;">Demo Video</h2>
+  <p style="text-align: center;">The resolution of training and displayed videos for all subjects is 512x512.</p>
+  <div style="width:100%; text-align: center;">
+    <div style="width:960px; text-align: center; margin:auto;">
+      <p style="width:100%; max-width:960px; word-wrap: break-word; text-align: center;">
+      </p>
+      <div style="width:100%">
+        <video poster="" autoplay controls muted loop playsinline height="100%" style="width:100%">
+          <source src="./static/demo/demo.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section style="background-color: #fff;">
+  <h2 class="title is-3" style="text-align: center;">Self Reconstruction</h2>
+  <p style="text-align: center;">The resolution of training and displayed videos for all subjects is 512x512.</p>
+<div style="width:100%">
+  <div style="width:960px;text-align:center;margin:auto;">
+      <div style="float:left;width:25%">
+        <video poster="" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/第一行/id1_recon.mp4"
+                    type="video/mp4">
+        </video>
+      </div>
+      <div style="float:left;width:25%">
+        <video poster="" autoplay controls muted loop playsinline height="100%">
+          <source src="./static/第一行/id2_recon.mp4"
+                    type="video/mp4">
+        </video>
+      </div>
+      <div style="float:right;width:25%">
+        <video poster="" autoplay controls muted loop playsinline  height="100%">
+          <source src="./static/第一行/id4_recon.mp4"
+                    type="video/mp4">
+        </video>
+      </div>
+      <div style="float:right;width:25%">
+        <video poster="" autoplay controls muted loop playsinline  height="100%">
+          <source src="./static/第一行/id6_recon.mp4"
+                    type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+  </section>
+ -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code></code>@misc{wang2024gaussianhead,
+      title={GaussianHead: High-fidelity Head Avatars with Learnable Gaussian Derivation}, 
+      author={Jie Wang and Jiu-Cheng Xie and Xianyan Li and Feng Xu and Chi-Man Pun and Hao Gao},
+      year={2024},
+      eprint={2312.01632},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer" style="padding-top: 6px; padding-bottom: 6px;">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Our website template comes from <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> and is modified based on it. Thanks to the author <a href="https://keunhong.com/">Keunhong Park</a> for making this template available.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
