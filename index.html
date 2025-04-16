@@ -64,6 +64,7 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">GaussianHead: High-fidelity Head Avatars with Learnable Gaussian Derivation</h1>
+          <div class="subtitle is-3 has-text-centered" style="margin-top: -0.75rem;">TVCG2025</div>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               Jie Wang<sup>1</sup>,
@@ -99,7 +100,7 @@
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>arXiv</span>
+                  <span>Paper</span>
                 </a>
               </span>
               <!-- Code Link. -->
@@ -134,9 +135,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-        <img src="./static/teaser-v2.png"/>
+        <img src="./static/teaser_v3.png"/>
       <p>
-        Figure. 1. Based on anisotropic 3D Gaussians and the learnable derivation strategies,
+        Fig 1. Based on anisotropic 3D Gaussians and the learnable derivation strategies,
         our method learns an identity-specific head avatar from a monocular video of the corresponding subject. 
         The proposed GaussianHead demonstrates outstanding performance in self-reconstruction, novel-view synthesis
         and cross-identity reenactment tasks.
@@ -186,19 +187,24 @@ f
   <div class="container is-max-desktop">
     <h2 class="title is-3" style="text-align: center;">Method</h2>
     <div class="hero-body">
-        <img src="./static/pipe_drawio.png"/>
-      <p>Figure. 2.  GaussianHead uses a set of 3D Gaussians with learnable attributes controlling their shape and
- appearance to model the subject’s head. A motion deformation field is first set up to represent the dynamic head geometry,
- which converts structureless Gaussians G_R to structured core ones G_C in a canonical space via conditioning on pre-acquired
- expression parameters e. Next, a single-resolution tri-plane structure of the feature container is leveraged to store appearance
-related attributes. Notably, derivation mechanisms through learnable rotations are applied to each core Gaussian, yielding several
- doppelgangers of it. The integration of sub-features obtained through projection onto the planes from those doppelgangers is
- taken as the final canonical feature f of the core Gaussian. Two separate tiny MLPs are then employed to decode opacity α and
- spherical harmonic coefficients (SHs), based on which we generate the final rendering via differential rasterization. Notations
- odot and bigCup represent Hadamard product and concatenation operations, respectively.</p>
+      <img src="./static/pipeline_v6.png"/>
+      <!-- 新增 has-text-justified 实现两端对齐 -->
+      <div class="content has-text-justified">
+        <p>
+          Figure 2. Method overview. GaussianHead uses a set of 3D Gaussians with learnable attributes controlling their shape and
+          appearance to model the subject’s head. A motion deformation field is first set up to represent the dynamic head geometry,
+          which converts structureless Gaussians <em>G</em><sub>R</sub> to structured core ones <em>G</em><sub>P</sub> in a posed space via conditioning on pre-acquired
+          expression parameters <em>e</em>. Next, a single-resolution tri-plane structure of the feature container is leveraged to store appearance
+          related attributes. Notably, derivation mechanisms through learnable rotations are applied to each core Gaussian, yielding several
+          doppelgangers of it. The integration of sub-features obtained through projection onto the planes from those doppelgangers is
+          taken as the final feature <em>f</em> of the core Gaussian. Two separate tiny MLPs are then employed to decode opacity <em>α</em> and spherical
+          harmonic coefficients (SHs), based on which we generate the final rendering via differential rasterization.
+        </p>
+      </div>
     </div>
   </div>
 </section>
+
 
 <section style="background-color: #fff;">
   <h2 class="title is-3" style="text-align: center;">Demo Video</h2>
